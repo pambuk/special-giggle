@@ -1,0 +1,26 @@
+{
+  "name": "receipts-express-mongo",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "css-build": "node-sass --omit-source-map-url sass/mystyles.scss public/css/mystyles.css",
+    "css-watch": "npm run css-build -- --watch",
+    "start-css": "npm run css-watch"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "express-mongo-db": "^2.0.4",
+    "express-nunjucks": "^2.2.3",
+    "http-errors": "~1.6.2",
+    "mongodb": "^3.1.1",
+    "morgan": "~1.9.0",
+    "nunjucks": "^3.1.3"
+  },
+  "devDependencies": {
+    "bulma": "^0.7.1",
+    "node-sass": "^4.9.2"
+  }
+}
