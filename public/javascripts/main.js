@@ -1,6 +1,6 @@
 const Vue = require('vue/dist/vue.js');
 
-Vue.component('world', require('./components/hello.vue'));
+Vue.component('AddReceipt', require('./components/AddReceipt.vue'));
 
 const app = new Vue({
     el: '#app'
