@@ -2,24 +2,28 @@
     <div>
         <div class="field">
             <div class="control">
-                <input class="input" type="text" placeholder="Total amount">
+                <input @keyup.enter="add()" v-model="amount" class="input" type="text" placeholder="Total amount">
             </div>
         </div>
 
         <div>
-            <a @click="addReceipt()" class="button is-success">Add</a>
+            <a @click="add()" class="button is-success">Add</a>
         </div>
     </div>
 </template>
 
 <script>
     module.exports = {
-        data() {
-            return {};
+        data: function () {
+            return {
+                amount: 0
+            };
         },
         methods: {
-            addReceipt: function () {
-                console.log('test');
+            add: function () {
+                if (this.amount > 0) {
+                    this.$store.dispatch('addReceipt', {amount: this.amount});
+                }
             }
         }
     }

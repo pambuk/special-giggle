@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <title>Receipts</title>
     <link rel="stylesheet" href="/css/mystyles.css">
+    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">-->
 </head>
 <body>
 <section class="container">
     <div id="app">
-        <add-receipt></add-receipt>
+        <router-link to="/receipts">Receipts</router-link>
+        <router-view></router-view>
+        <!--<add-receipt></add-receipt>-->
     </div>
 </section>
 <script src="/javascripts/bundle.js"></script>
