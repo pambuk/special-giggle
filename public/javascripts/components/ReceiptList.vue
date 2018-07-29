@@ -1,5 +1,5 @@
 <template>
-    <div class="content">
+    <div>
         <ul>
             <li v-for="item in receipts">
                 <router-link :to="'/receipts/' + item._id">

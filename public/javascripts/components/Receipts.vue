@@ -1,7 +1,10 @@
 <template>
-    <div>
-        <add-receipt></add-receipt>
-        <receipt-list></receipt-list>
+    <div class="columns">
+        <div class="column is-three-fifths">
+            <add-receipt></add-receipt>
+            <receipt-list></receipt-list>
+        </div>
+        <div class="column"></div>
     </div>
 </template>
 

@@ -10,6 +10,12 @@ router.get('/', (req, res) => {
 
         items.forEach((item, key) => {
             items[key].amount = item.amount / 100;
+
+            if (item.items) {
+                item.items.forEach((receiptItem, receiptItemKey) => {
+                    item.items[receiptItemKey].amount = receiptItem.amount / 100;
+                })
+            }
         });
 
         res.send(items);
@@ -32,10 +38,13 @@ router.delete('/:id', (req, res, next) => {
 });
 
 router.put('/:id', (req, res, next) => {
+    let listItem = req.body.payload.listItem;
+    listItem.amount = parseFloat(listItem.amount.replace(/,/g, '.')) * 100;
+
     req.db.collection('receipts').updateOne(
         {_id: new mongodb.ObjectID(req.params.id)},
         {$push: {
-            items: req.body.payload.listItem
+            items: listItem
         }},
         {upsert: true}
     );

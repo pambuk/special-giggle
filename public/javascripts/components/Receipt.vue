@@ -17,7 +17,7 @@
                 <p class="title is-6">Items:</p>
                 <ul>
                     <li v-for="item in receipt.items">
-                        {{ item.name}}, {{ item.amount.toLocaleString('pl-PL', {style: 'currency', currency: 'PLN'}) }}
+                        {{ item.name}}, {{ item.amount.toLocaleString("pl-PL", {style: "currency", currency: "PLN"}) }}
                     </li>
                 </ul>
             </div>
@@ -26,7 +26,10 @@
 </template>
 
 <script>
+    const currencyFormat = require('../mixins/currencyFormat');
+
     module.exports = {
+        mixins: [currencyFormat],
         data() {
             return {
                 listItem: {}
@@ -41,6 +44,8 @@
         methods: {
             addListItem() {
                 let listLength = (this.receipt.items ? this.receipt.items.length : 0);
+                this.listItem.amount = Number.parseFloat(this.listItem.amount);
+
                 this.$store
                     .dispatch('addReceiptItem', {
                         id: this.$route.params.id,

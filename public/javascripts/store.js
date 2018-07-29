@@ -18,6 +18,7 @@ const store = new Vuex.Store({
             state.receipts.find(item => {
                 console.log('try to match ids', item, payload);
                 if (payload.id === item._id) {
+                    console.log('items', item.items);
                     item.items.push(payload.listItem);
                 }
             });

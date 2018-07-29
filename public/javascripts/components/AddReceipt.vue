@@ -16,13 +16,13 @@
     module.exports = {
         data: function () {
             return {
-                amount: 0
+                amount: ''
             };
         },
         methods: {
             add: function () {
                 if (this.amount > 0) {
-                    this.$store.dispatch('addReceipt', {amount: this.amount}).then(() => this.amount = 0);
+                    this.$store.dispatch('addReceipt', {amount: this.amount}).then(() => this.amount = '');
                 }
             }
         }
