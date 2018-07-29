@@ -3,7 +3,7 @@
         <ul>
             <li v-for="item in receipts">
                 <router-link :to="'/receipts/' + item._id">
-                    {{ item.amount.toLocaleString('pl-PL', {style: 'currency', currency: 'PLN'}) }}
+                    {{ formatAsCurrency(item.amount) }}
                 </router-link>
                 <a @click="deleteReceipt(item._id)" class="delete"></a>
             </li>
@@ -11,15 +11,17 @@
 
         <hr>
 
-        <p>{{ sum }}</p>
+        <p>{{ formatAsCurrency(sum) }}</p>
     </div>
 </template>
 
 <script>
     const mapState = require('vuex').mapState;
     const mapActions = require('vuex').mapActions;
+    const currencyFormat = require('../mixins/currencyFormat.js');
 
     module.exports = {
+        mixins: [currencyFormat],
         computed: mapState({
             receipts: state => state.receipts,
             sum: state => {

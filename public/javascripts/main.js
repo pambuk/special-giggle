@@ -14,6 +14,9 @@ const router = new VueRouter({routes});
 Vue.use(VueRouter);
 Vue.use(Vuex);
 
+// const currencyFormat = require('./mixins/currencyFormat.js');
+// Vue.mixin(currencyFormat);
+
 const store = require('./store.js');
 new Vue({
     el: '#app',
