@@ -9,7 +9,7 @@
     "css-watch": "npm run css-build -- --watch",
     "start-css": "npm run css-watch",
     "js-build": "browserify -t vueify -e public/javascripts/main.js -o public/javascripts/bundle.js",
-    "dev": "watchify -vd -p browserify-hmr -t vueify -e public/javascripts/main.js -o public/javascripts/bundle.js"
+    "dev": "watchify -vd -p browserify-hmr -t vueify -e public/javascripts/main.js -o public/javascripts/bundle.js & DEBUG=receipts-express-mongo:* node ./bin/www"
   },
   "dependencies": {
     "axios": "^0.18.0",

@@ -8,6 +8,10 @@
                 <a @click="deleteReceipt(item._id)" class="delete"></a>
             </li>
         </ul>
+
+        <hr>
+
+        <p>{{ sum }}</p>
     </div>
 </template>
 
@@ -17,7 +21,16 @@
 
     module.exports = {
         computed: mapState({
-            receipts: state => state.receipts
+            receipts: state => state.receipts,
+            sum: state => {
+                if (state.receipts.length > 0) {
+                    let reducer = (accumulator, item) => {
+                        return Number.parseFloat(accumulator) + Number.parseFloat(item.amount);
+                    };
+
+                    return state.receipts.reduce(reducer, 0);
+                }
+            }
         }),
         methods: mapActions([
             'deleteReceipt'

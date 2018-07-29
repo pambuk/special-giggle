@@ -1,8 +1,9 @@
 const Vuex = require('vuex');
 const axios = require('axios');
-const mongodb = require('mongodb');
 
 const SET_RECEIPTS = 'SET_RECEIPTS';
+const UPDATE_RECEIPT_ITEMS = 'UPDATE_RECEIPT_ITEMS';
+
 const store = new Vuex.Store({
     state: {
         receipts: []
@@ -11,6 +12,15 @@ const store = new Vuex.Store({
         [SET_RECEIPTS](state, receipts) {
             console.log('mutate receipts', receipts);
             state.receipts = receipts;
+        },
+        [UPDATE_RECEIPT_ITEMS](state, payload) {
+            console.log('mutate receipt\'s items');
+            state.receipts.find(item => {
+                console.log('try to match ids', item, payload);
+                if (payload.id === item._id) {
+                    item.items.push(payload.listItem);
+                }
+            });
         }
     },
     getters: {
@@ -48,6 +58,19 @@ const store = new Vuex.Store({
                     dispatch('fetchReceipts');
                 })
                 .catch(error => console.log(error));
+        },
+        addReceiptItem({commit}, payload) {
+            console.log('add list item to receipt', payload);
+
+            return new Promise((resolve, reject) => {
+                axios
+                    .put('/receipts/' + payload.id, {payload})
+                    .then(() => {
+                        commit(UPDATE_RECEIPT_ITEMS, payload);
+                        resolve();
+                    })
+                    .catch(() => reject());
+            });
         }
     }
 });

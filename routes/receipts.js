@@ -31,4 +31,16 @@ router.delete('/:id', (req, res, next) => {
     res.send();
 });
 
+router.put('/:id', (req, res, next) => {
+    req.db.collection('receipts').updateOne(
+        {_id: new mongodb.ObjectID(req.params.id)},
+        {$push: {
+            items: req.body.payload.listItem
+        }},
+        {upsert: true}
+    );
+
+    res.send();
+});
+
 module.exports = router;
