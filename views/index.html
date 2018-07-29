@@ -4,15 +4,27 @@
     <meta charset="UTF-8">
     <title>Receipts</title>
     <link rel="stylesheet" href="/css/mystyles.css">
-    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">-->
 </head>
 <body>
-<section class="container">
-    <div id="app">
-        <router-link to="/receipts">Receipts</router-link>
-        <router-view></router-view>
-        <!--<add-receipt></add-receipt>-->
-    </div>
+<section class="" id="app">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <router-link to="/" class="navbar-item">Home</router-link>
+
+            <!--<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">-->
+            <!--<span aria-hidden="true"></span>-->
+            <!--<span aria-hidden="true"></span>-->
+            <!--<span aria-hidden="true"></span>-->
+            <!--</a>-->
+        </div>
+        <div class="navbar-menu is-active">
+            <div class="navbar-start">
+                <router-link to="/receipts" class="navbar-item">Receipts</router-link>
+            </div>
+        </div>
+    </nav>
+
+    <router-view></router-view>
 </section>
 <script src="/javascripts/bundle.js"></script>
 </body>
