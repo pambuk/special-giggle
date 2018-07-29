@@ -7,6 +7,7 @@ const expressMongoDb = require('express-mongo-db');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const receiptsRouter = require('./routes/receipts');
 
 const app = express();
 const isDev = app.get('env') === 'development';
@@ -25,15 +26,8 @@ expressNunjucks(app, {
     noCache: isDev
 });
 
-// MongoClient.connect('mongodb://localhost:27017/receipts', function (err, client) {
-//   if (err) {
-//      throw err;
-//   }
-//
-//   app.set('db', client.db('receipts'));
-// });
-
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/receipts', receiptsRouter);
 
 module.exports = app;
